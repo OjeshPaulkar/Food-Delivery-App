@@ -3371,141 +3371,18 @@ const RestaurantsList = [
                         "type": "WEBLINK"
                     },
                     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
-                },
-                {
-                    "info": {
-                        "id": "396741",
-                        "name": "Faasos - Wraps, Rolls & Shawarma",
-                        "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/7/28/669c68ba-a0a7-4dc8-b642-d22d5318d1a6_396741.JPG",
-                        "locality": "Residency Road",
-                        "areaName": "Shantinagar",
-                        "costForTwo": "₹200 for two",
-                        "cuisines": [
-                            "Kebabs",
-                            "Fast Food",
-                            "Snacks",
-                            "American",
-                            "Healthy Food",
-                            "Desserts",
-                            "Beverages"
-                        ],
-                        "avgRating": 4.3,
-                        "parentId": "21809",
-                        "avgRatingString": "4.3",
-                        "totalRatingsString": "1.8K+",
-                        "sla": {
-                            "deliveryTime": 28,
-                            "lastMileTravel": 2.2,
-                            "serviceability": "SERVICEABLE",
-                            "slaString": "25-30 mins",
-                            "lastMileTravelString": "2.2 km",
-                            "iconType": "ICON_TYPE_EMPTY"
-                        },
-                        "availability": {
-                            "nextCloseTime": "2024-09-30 23:59:00",
-                            "opened": true
-                        },
-                        "badges": {
-                            "imageBadges": [
-                                {
-                                    "imageId": "Green%20Dot%20Awards/Best%20In%20Veg%20Rolls.png",
-                                    "description": "Delivery!"
-                                },
-                                {
-                                    "imageId": "Rxawards/_CATEGORY-Rolls.png",
-                                    "description": "Delivery!"
-                                }
-                            ],
-                            "textExtendedBadges": [
-                                {
-                                    "iconId": "guiltfree/GF_Logo_android_3x",
-                                    "shortDescription": "options available",
-                                    "fontColor": "#7E808C"
-                                }
-                            ]
-                        },
-                        "isOpen": true,
-                        "type": "F",
-                        "badgesV2": {
-                            "entityBadges": {
-                                "imageBased": {
-                                    "badgeObject": [
-                                        {
-                                            "attributes": {
-                                                "description": "Delivery!",
-                                                "imageId": "Green%20Dot%20Awards/Best%20In%20Veg%20Rolls.png"
-                                            }
-                                        },
-                                        {
-                                            "attributes": {
-                                                "description": "Delivery!",
-                                                "imageId": "Rxawards/_CATEGORY-Rolls.png"
-                                            }
-                                        }
-                                    ]
-                                },
-                                "textBased": {},
-                                "textExtendedBadges": {
-                                    "badgeObject": [
-                                        {
-                                            "attributes": {
-                                                "description": "",
-                                                "fontColor": "#7E808C",
-                                                "iconId": "guiltfree/GF_Logo_android_3x",
-                                                "shortDescription": "options available"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "aggregatedDiscountInfoV3": {
-                            "header": "50% OFF",
-                            "subHeader": "UPTO ₹100"
-                        },
-                        "orderabilityCommunication": {
-                            "title": {},
-                            "subTitle": {},
-                            "message": {},
-                            "customIcon": {}
-                        },
-                        "differentiatedUi": {
-                            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-                            "differentiatedUiMediaDetails": {
-                                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-                                "lottie": {},
-                                "video": {}
-                            }
-                        },
-                        "reviewsSummary": {},
-                        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-                        "restaurantOfferPresentationInfo": {},
-                        "externalRatings": {
-                            "aggregatedRating": {
-                                "rating": "--"
-                            }
-                        },
-                        "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
-                    },
-                    "analytics": {
-                        "context": "seo-data-85b1f7ba-86db-4a7d-a787-0bd11f1b8198"
-                    },
-                    "cta": {
-                        "link": "https://www.swiggy.com/city/bangalore/faasos-wraps-rolls-and-shawarma-residency-road-shantinagar-rest396741",
-                        "text": "RESTAURANT_MENU",
-                        "type": "WEBLINK"
-                    },
-                    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
                 }
                 ];
 
-const RestaurantCards = (prop) => {
-    const {resData}  = prop;
+const RestaurantCards = ({resData}) => {
+    // const {resData}  = prop;
 
     const { cloudinaryImageId, name, avgRating, deliveryTime, cuisines } = resData?.info;
     return (<div>
                 <div className="res-card">
-                    <img className="card-image" alt="rest-image" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}></img>
+                    <img className="card-image" 
+                         alt="rest-image" 
+                         src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}></img>
                     <h3>{name}</h3>
                     <span>Rating {avgRating}</span>
                     <span>{deliveryTime}</span>
@@ -3524,7 +3401,7 @@ const BodyComponent = () => {
 
             <div className="res-cards-container">
             { RestaurantsList.map((restaurant) => {
-                   return <RestaurantCards resData = {restaurant} />
+                   return <RestaurantCards key={restaurant.info.id} resData = {restaurant} />
                 })}
             </div>
 
