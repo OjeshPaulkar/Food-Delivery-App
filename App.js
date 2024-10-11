@@ -3391,7 +3391,7 @@ const RestaurantCards = ({resData}) => {
              </div>
 )}
 
-const BodyComponent = () => {
+const Body = () => {
     return (
         <div className="body">
             <div className="search-container">
@@ -3413,7 +3413,7 @@ const BodyComponent = () => {
 const AppLayout = () => {
   return (<div id="appRoot">
         <Header />
-        <BodyComponent />
+        <Body />
     </div>
 )}
 
